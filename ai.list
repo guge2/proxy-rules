@@ -1,0 +1,55 @@
+# 走 🤖 AI 出口的补充域名：远程规则集未覆盖或更新滞后的部分。
+# Clash（mihomo classical 文本规则集）与小火箭 RULE-SET 共用；每行只写类型和值，不写策略。
+
+# ---------- Siri / Apple 智能 / ChatGPT 扩展（须排在 Apple 直连规则集之前） ----------
+# 域名来源：Apple 企业网络文档 https://support.apple.com/zh-cn/101555，以及社区规则库的交集
+# （Nyaacho0v0/siri-ai-rules、byx020119/Shadowrocket-Siri、pure-white-ice-cream/shadowrocket-apple-ai-rule）。
+# 图乐园、照片清理在本机运行，只有资格检查和首次模型下载需要联网；模型下载走 mesu/gdmf/cdn-apple，由 Apple 规则集直连。
+# Siri 与听写、Spotlight 建议（Apple 文档列出的主机）
+DOMAIN,guzzoni.apple.com
+DOMAIN-SUFFIX,smoot.apple.com
+# iOS 27 Siri AI 接入点（api-siri-prod、seed.siri 等）
+DOMAIN,api-siri-prod.apple.com
+DOMAIN-SUFFIX,siri.apple.com
+# 私密云计算（Private Cloud Compute）与扩展中继，TCP/UDP 443，节点需开启 UDP
+DOMAIN-SUFFIX,apple-relay.apple.com
+DOMAIN-SUFFIX,apple-relay.cloudflare.com
+DOMAIN-SUFFIX,apple-relay.fastly-edge.com
+DOMAIN,cp4.cloudflare.com
+# 其余中继（akamaized、mask.apple-dns、carry-relay 等）由关键字覆盖
+DOMAIN-KEYWORD,apple-relay
+# 地区检测：gspe1-ssl.ls.apple.com/pep/gcc 按网络出口返回国家代码，iOS 26.1 起必需；走代理后 Apple 地图可能不再使用国内版数据。
+DOMAIN,gspe1-ssl.ls.apple.com
+# OHTTP 中继凭证交换（与 iCloud 专用代理共用）。封锁 mask-api.icloud.com 会让私密云计算报错，故一并走 AI 出口。
+DOMAIN,mask-api.icloud.com
+DOMAIN,mask-api.fe.apple-dns.net
+DOMAIN,mask-t.apple-dns.net
+DOMAIN-SUFFIX,mask.icloud.com
+DOMAIN-SUFFIX,mask-h2.icloud.com
+DOMAIN-SUFFIX,mask.apple-dns.net
+# 可选：社区规则普遍包含 gateway.icloud.com（CloudKit 网关），但它也承载 iCloud 同步，走代理会拖慢同步。
+# 仅当上述规则生效后设置里仍提示“所在地区不可用”时再启用。
+# DOMAIN,gateway.icloud.com
+
+# ---------- AI 服务 ----------
+DOMAIN-SUFFIX,openai.com
+DOMAIN-SUFFIX,chatgpt.com
+DOMAIN-SUFFIX,oaistatic.com
+DOMAIN-SUFFIX,oaiusercontent.com
+DOMAIN-SUFFIX,anthropic.com
+DOMAIN-SUFFIX,claude.ai
+DOMAIN-SUFFIX,claude.com
+DOMAIN-SUFFIX,claudeusercontent.com
+DOMAIN-SUFFIX,anthropicusercontent.com
+DOMAIN-SUFFIX,perplexity.ai
+DOMAIN-SUFFIX,pplx.ai
+DOMAIN-SUFFIX,poe.com
+DOMAIN-SUFFIX,poeapis.com
+DOMAIN-SUFFIX,grok.com
+DOMAIN-SUFFIX,x.ai
+DOMAIN-SUFFIX,cursor.com
+DOMAIN-SUFFIX,cursor.sh
+DOMAIN-SUFFIX,windsurf.com
+DOMAIN-SUFFIX,codeium.com
+DOMAIN-SUFFIX,githubcopilot.com
+DOMAIN-SUFFIX,copilot.microsoft.com
