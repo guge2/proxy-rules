@@ -53,3 +53,15 @@ DOMAIN-SUFFIX,windsurf.com
 DOMAIN-SUFFIX,codeium.com
 DOMAIN-SUFFIX,githubcopilot.com
 DOMAIN-SUFFIX,copilot.microsoft.com
+
+# ---------- 验证码 / 支付 / 实验开关：与 AI 账号保持同一出口 ----------
+# Cloudflare Turnstile 人机验证（claude.ai、chatgpt.com 登录时使用），远程规则集把它归入流媒体组。
+DOMAIN-SUFFIX,challenges.cloudflare.com
+# Stripe 订阅付款与风控；ChinaMax 的 DOMAIN-KEYWORD,stripe 会把 stripe.network、stripecdn.com 判为直连。
+DOMAIN-SUFFIX,stripe.com
+DOMAIN-SUFFIX,stripe.network
+DOMAIN-SUFFIX,stripecdn.com
+# Statsig 功能开关 / 埋点（OpenAI 规则集只覆盖了部分域名）
+DOMAIN-SUFFIX,featureassets.org
+DOMAIN-SUFFIX,prodregistryv2.org
+DOMAIN-SUFFIX,statsigapi.net

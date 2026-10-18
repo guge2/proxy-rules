@@ -4,7 +4,7 @@
 
 | 文件 | 用途 |
 |---|---|
-| `ai.list` | 走 `🤖 AI` 出口的补充域名（AI 服务、Siri / Apple 智能） |
+| `ai.list` | 走 `🤖 AI` 出口的补充域名（AI 服务及其验证码、支付，Siri / Apple 智能） |
 | `direct.list` | 直连的补充域名（支付宝 / 阿里风控类、系统连通性检查） |
 | `clash-verge-global-extend-script.js` | Clash Verge Rev 全局扩展脚本 |
 | `shadowrocket.conf` | 小火箭配置 |
