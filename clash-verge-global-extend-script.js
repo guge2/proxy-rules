@@ -141,10 +141,11 @@ function main(config) {
   };
 
   // 订阅自带 DNS 时沿用订阅的设置，只补齐解析代理服务器域名用的 DNS。
+  // Clash Verge 会预先写入 use-system-hosts 等字段，故以是否有 nameserver 判断订阅是否自带 DNS。
   const plainDns = ["system", "223.5.5.5", "119.29.29.29"];
   const subscriptionDns = config.dns || {};
   config.dns =
-    Object.keys(subscriptionDns).length > 0
+    subscriptionDns.nameserver?.length > 0
       ? {
         ...subscriptionDns,
         "proxy-server-nameserver": subscriptionDns["proxy-server-nameserver"]?.length
